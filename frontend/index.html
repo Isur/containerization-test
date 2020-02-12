@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Docker</title>
+    <style>
+        body {
+            background: grey;
+            color: silver;
+        }
+    </style>
+</head>
+<body>
+    This is docker.
+    <button onclick="myFunction()">Click me</button>
+
+<p id="demo"></p>
+
+<script>
+myFunction();
+function myFunction() {
+    fetch('http://localhost:3000/api', {
+        method: "GET",
+    }).then(r => r.json()).then(x => document.getElementById("demo").innerHTML = x.rows[0].integer);
+}
+</script>
+</body>
+</html>
