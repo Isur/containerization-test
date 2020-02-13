@@ -34,10 +34,14 @@ services:
         container_name: frontend
         ports:
             - "80:80"
+        depends_on: 
+            - backend
     frontend-2:
         build: ./frontend-2
         container_name: frontend-2
         ports:
             - "81:80"
+        depends_on: 
+            - backend
 volumes: 
     pgadmin:

@@ -12,7 +12,7 @@ function App() {
 
   function handleClick() {
     const getData = async () => {
-      const res = await axios.get("http://localhost:3000/api");
+      const res = await axios.get("/api");
       setState(res.data.rows[0].integer);
     }
     getData();

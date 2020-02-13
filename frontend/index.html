@@ -20,7 +20,7 @@
 <script>
 myFunction();
 function myFunction() {
-    fetch('http://localhost:3000/api', {
+    fetch('/api', {
         method: "GET",
     }).then(r => r.json()).then(x => document.getElementById("demo").innerHTML = x.rows[0].integer);
 }

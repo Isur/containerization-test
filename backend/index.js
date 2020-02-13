@@ -11,7 +11,6 @@ const port = process.env.PORT|| 3000;
 
 app.get('/api', (req, res) => {
     d.module.query(`INSERT INTO users VALUES (DEFAULT) RETURNING integer`).then(x => {
-        console.log({x, t:'test'});
         res.json(x)
     });
 });
