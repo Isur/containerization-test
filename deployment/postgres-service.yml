@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-apkatest
+  labels:
+    app: postgres-apkatest
+spec:
+  type: ClusterIP
+  ports:
+    - port: 31804
+      targetPort: 5432
+  selector:
+    app: postgres-apkatest

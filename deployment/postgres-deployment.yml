@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-apkatest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-apkatest
+  template:
+    metadata:
+      labels:
+        app: postgres-apkatest
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:11
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - configMapRef:
+                name: postgres-config-apkatest
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdb-apkatest
+      nodeSelector:
+        kubernetes.io/hostname: worker5
+      volumes:
+        - name: postgresdb-apkatest
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim-apkatest

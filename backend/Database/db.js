@@ -2,11 +2,11 @@ const { Pool } = require("pg");
 const migrate = require("./migration").module;
 
 const databaseConfig = {
-  user: "db",
-  host: "db",
-  database: "db",
-  password: "db",
-  port: 5432,
+  user: process.env.DBUSER || "db",
+  host: process.env.DBHOST || "db",
+  database: process.env.DBNAME || "db",
+  password: process.env.DBPASSWORD || "db",
+  port: process.env.DBPORT || 5432,
 };
 
 const pool = Pool(databaseConfig);

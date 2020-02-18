@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend2
+spec:
+  selector:
+    app: apkatest
+    tier: frontend2
+  ports:
+    - protocol: TCP
+      port: 31801
+      targetPort: 80
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apkatest
+      tier: frontend2
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: apkatest
+        tier: frontend2
+        track: stable
+    spec:
+      containers:
+      - name: frontendapp2
+        image: "isur96/example-frontend-2"
+      nodeSelector:
+        kubernetes.io/hostname: worker5

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config-apkatest
+  labels:
+    app: postgres-apkatest
+data:
+  POSTGRES_DB: db
+  POSTGRES_USER: db
+  POSTGRES_PASSWORD: db
